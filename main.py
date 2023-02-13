@@ -5,7 +5,7 @@ def deposit():
             amount = int(amount)
 
             if amount >= 1:
-                print("grater than zero")
+
                 break
             else:
                 print("amount must be grater than zero")
@@ -36,19 +36,28 @@ def bet_amount():
             bet = int(bet)
 
             if 1 <= bet <= 100:
-                print("grater than zero")
+
                 break
             else:
                 print("amount must be grater than zero")
         else:
             print("please enter a number")
+    return bet
 
 
 def main():
     balance = deposit()
     lines = bet_lines()
-    print(balance)
-    print(lines)
+    while True:
+
+        bet = bet_amount()
+        total_bet = bet * lines
+
+        if total_bet > balance:
+            print("you havent enogh money")
+        else:
+            break
+    print(f"you are betting ${bet} on {lines} lines.Total bet is ${total_bet}")
 
 
 main()
