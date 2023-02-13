@@ -10,6 +10,9 @@ symbol_count = {
     "D": 8,
 }
 
+def get_slot_machine_spin(rows,cols,symbols):
+    ra
+
 
 def deposit():
     while True:
