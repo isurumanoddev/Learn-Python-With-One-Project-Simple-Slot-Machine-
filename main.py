@@ -4,10 +4,10 @@ ROWS = 3
 COLS = 3
 
 symbol_count = {
-    "A": 2,
+    "A": 20,
     "B": 4,
-    "C": 6,
-    "D": 8,
+    "C": 2,
+    "D": 2,
 }
 symbol_value = {
     "A": 5,
@@ -18,11 +18,21 @@ symbol_value = {
 
 
 def check_winning(columns, lines, bet, values):
+    winnings = 0
+    winnings_lines = []
+    print(columns)
     for line in range(lines):
         symbol = columns[0][line]
         for column in columns:
-           symbol_check = column[line]
+            symbol_check = column[line]
+            if symbol != symbol_check:
+                break
+        else:
+            winnings += values[symbol] * bet
+            winnings_lines.append(line)
 
+    print(winnings)
+    print(winnings_lines)
 
 
 def get_slot_machine_spin(rows, cols, symbols):
@@ -119,7 +129,7 @@ def main():
 
     slots = get_slot_machine_spin(ROWS, COLS, symbol_count)
     print_slot = print_slots(slots)
-    check_winning(slots, lines, bet, symbol_value)
+    winnings = check_winning(slots, lines, bet, symbol_value)
 
 
 main()
