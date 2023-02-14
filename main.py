@@ -17,21 +17,34 @@ def get_slot_machine_spin():
         for i in range(value):
             all_symbols.append(key)
 
-    print(all_symbols)
     columns = []
-
+    symbol = all_symbols[:]
     for col in range(3):
         column = []
-        symbol = all_symbols[:]
+
         for row in range(3):
             value = random.choice(symbol)
             column.append(value)
             symbol.remove(value)
-        print(column)
-        print(symbol)
+
+        columns.append(column)
+
+    return columns
 
 
-get_slot_machine_spin()
+def print_slots():
+    columns = get_slot_machine_spin()
+    print(columns)
+    for row in range(len(columns)):
+        for i,column in enumerate(columns):
+            if i == len(columns) - 1:
+                print(column[row] )
+            else:
+                print(column[row], end=" | ")
+        # print()
+
+
+print_slots()
 
 
 def deposit():
