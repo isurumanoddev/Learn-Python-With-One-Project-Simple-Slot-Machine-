@@ -9,20 +9,34 @@ symbol_count = {
     "C": 6,
     "D": 8,
 }
+symbol_value = {
+    "A": 5,
+    "B": 4,
+    "C": 3,
+    "D": 2,
+}
 
 
-def get_slot_machine_spin():
+def check_winning(columns, lines, bet, values):
+    for line in range(lines):
+        symbol = columns[0][line]
+        for column in columns:
+           symbol_check = column[line]
+
+
+
+def get_slot_machine_spin(rows, cols, symbols):
     all_symbols = []
-    for key, value in symbol_count.items():
+    for key, value in symbols.items():
         for i in range(value):
             all_symbols.append(key)
 
     columns = []
     symbol = all_symbols[:]
-    for col in range(3):
+    for col in range(cols):
         column = []
 
-        for row in range(3):
+        for row in range(rows):
             value = random.choice(symbol)
             column.append(value)
             symbol.remove(value)
@@ -33,16 +47,13 @@ def get_slot_machine_spin():
 
 
 def print_slots(columns):
-
     for row in range(len(columns)):
-        for i,column in enumerate(columns):
+        for i, column in enumerate(columns):
             if i == len(columns) - 1:
-                print(column[row] )
+                print(column[row])
             else:
                 print(column[row], end=" | ")
         # print()
-
-
 
 
 def deposit():
@@ -106,8 +117,9 @@ def main():
             break
     print(f"you are betting ${bet} on {lines} lines.Total bet is ${total_bet}")
 
+    slots = get_slot_machine_spin(ROWS, COLS, symbol_count)
+    print_slot = print_slots(slots)
+    check_winning(slots, lines, bet, symbol_value)
 
-    slots = get_slot_machine_spin()
-    print_slots(slots)
 
 main()
