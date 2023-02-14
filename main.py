@@ -32,9 +32,8 @@ def get_slot_machine_spin():
     return columns
 
 
-def print_slots():
-    columns = get_slot_machine_spin()
-    print(columns)
+def print_slots(columns):
+
     for row in range(len(columns)):
         for i,column in enumerate(columns):
             if i == len(columns) - 1:
@@ -44,7 +43,6 @@ def print_slots():
         # print()
 
 
-print_slots()
 
 
 def deposit():
@@ -108,4 +106,8 @@ def main():
             break
     print(f"you are betting ${bet} on {lines} lines.Total bet is ${total_bet}")
 
-# main()
+
+    slots = get_slot_machine_spin()
+    print_slots(slots)
+
+main()
