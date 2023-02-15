@@ -4,7 +4,7 @@ ROWS = 3
 COLS = 3
 
 symbol_count = {
-    "A": 20,
+    "A": 10,
     "B": 4,
     "C": 2,
     "D": 2,
@@ -31,8 +31,7 @@ def check_winning(columns, lines, bet, values):
             winnings += values[symbol] * bet
             winnings_lines.append(line)
 
-    print(winnings)
-    print(winnings_lines)
+    return winnings, winnings_lines
 
 
 def get_slot_machine_spin(rows, cols, symbols):
@@ -113,8 +112,7 @@ def bet_amount():
     return bet
 
 
-def main():
-    balance = deposit()
+def spin(balance):
     lines = bet_lines()
     while True:
 
@@ -129,7 +127,21 @@ def main():
 
     slots = get_slot_machine_spin(ROWS, COLS, symbol_count)
     print_slot = print_slots(slots)
-    winnings = check_winning(slots, lines, bet, symbol_value)
+    winnings, winning_lines = check_winning(slots, lines, bet, symbol_value)
+    print("winnings ", winnings)
+
+    return winnings - total_bet
+
+
+def main():
+    balance = deposit()
+    while True:
+        print(f"current balance is ${balance}")
+
+        spin_ = input("press enter to spin ( q to quit )")
+        if spin_ == "q":
+            break
+        balance += spin(balance)
 
 
 main()
