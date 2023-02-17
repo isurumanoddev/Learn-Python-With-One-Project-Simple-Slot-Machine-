@@ -13,3 +13,6 @@ The game ends when the player has no more dollars left or decides to quit.
 # How to Run
 Run the command python main.py in the terminal or command prompt to start the game.
 Follow the instructions in the game to play.
+
+# Customization
+You can customize the game by adjusting the payout ratios . You can also modify the symbols and their representations 
