@@ -16,3 +16,6 @@ Follow the instructions in the game to play.
 
 # Customization
 You can customize the game by adjusting the payout ratios . You can also modify the symbols and their representations 
+
+# Credits
+This simplified slot machine game was created by  Isuru Manod.
